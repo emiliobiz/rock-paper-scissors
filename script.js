@@ -1,9 +1,6 @@
 const gameOptions = ['rock', 'paper', 'scissors'];
 let userScore = 0;
 let computerScore = 0;
-let outcome = '';
-const computerSelection = getComputerChoice();
-const userSelection = prompt("Choose between: rock, paper and scissors");
 
 function getComputerChoice(){
     let randomIndex = Math.floor(Math.random() * gameOptions.length);
@@ -12,43 +9,59 @@ function getComputerChoice(){
 };
 
 function playRound(computerSelection, userSelection){
+    let result = "";
 
     if (computerSelection == userSelection){
-        outcome = 'Tie!'
+        result = 'Tie!'
     }
 
-    if (computerSelection == 'rock' && userSelection == 'scissors'){
-        outcome = 'You lost! Rock wins scissors!'
+    else if (computerSelection == 'rock' && userSelection == 'scissors'){
+        result = 'You lost! Rock wins scissors!'
+        computerScore ++
     }
 
-    if (computerSelection == 'paper' && userSelection == 'rock'){
-        outcome = 'You lost! Paper wins rock!'
+    else if (computerSelection == 'paper' && userSelection == 'rock'){
+        result = 'You lost! Paper wins rock!'
+        computerScore ++
     }
 
-    if (computerSelection == 'scissors' && userSelection == 'paper'){
-        outcome = 'You lost! Scissors wins paper!'
+    else if (computerSelection == 'scissors' && userSelection == 'paper'){
+        result = 'You lost! Scissors wins paper!'
+        computerScore ++
     }
 
-    if (userSelection == 'rock' && computerSelection == 'scissors'){
-        outcome = 'You won!'
+    else if (userSelection == 'rock' && computerSelection == 'scissors'){
+        result = 'You won!'
+        userScore ++
     }
 
-    if (userSelection == 'paper' && computerSelection == 'rock'){
-        outcome = 'You won!'
+    else if (userSelection == 'paper' && computerSelection == 'rock'){
+        result = 'You won!'
+        userScore ++
     }
 
-    if (userSelection == 'scissors' && computerSelection == 'paper'){
-        outcome = 'You won!'
+    else if (userSelection == 'scissors' && computerSelection == 'paper'){
+        result = 'You won!'
+        userScore ++
     }
     
+    return result  
 };
 
 function playGame(){
-    for (i = 0; i < 4; i++){
-            console.log(playRound(computerSelection, userSelection))
-            console.log(outcome)
+
+    for (i = 0; i <= 4; i++){
+        
+        let computerSelection = getComputerChoice();
+        let userSelection = prompt("Choose between: rock, paper and scissors");
+    
+        console.log(playRound(computerSelection, userSelection));
+        console.log(`Player: ${userScore} | Computer: ${computerScore} `);
     }
     
+    userScore > computerScore ? console.log('Player won!'):
+    computerScore > userScore ? console.log('Computer won!'):
+    console.log('Tie!')
 }
 
 playGame()
