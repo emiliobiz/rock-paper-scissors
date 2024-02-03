@@ -1,10 +1,10 @@
-const gameOptions = ['rock', 'paper', 'scissors'];
+const GAME_OPTIONS = ['rock', 'paper', 'scissors'];
 let userScore = 0;
 let computerScore = 0;
 
 function getComputerChoice(){
-    let randomIndex = Math.floor(Math.random() * gameOptions.length);
-    let computerChoice = gameOptions[randomIndex];
+    let randomIndex = Math.floor(Math.random() * GAME_OPTIONS.length);
+    let computerChoice = GAME_OPTIONS[randomIndex];
     return computerChoice
 };
 
