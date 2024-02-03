@@ -15,36 +15,24 @@ function playRound(computerSelection, userSelection){
         result = 'Tie!'
     }
 
-    else if (computerSelection == 'rock' && userSelection == 'scissors'){
-        result = 'You lost! Rock wins scissors!'
-        computerScore ++
-    }
+    else if (
+        (computerSelection == 'rock' && userSelection == 'scissors') ||
+        (computerSelection == 'paper' && userSelection == 'rock') || 
+        (computerSelection == 'scissors' && userSelection == 'paper')
+        ){
+            result = `You lost! ${computerSelection} beats ${userSelection}`
+            computerScore ++;
+        }
 
-    else if (computerSelection == 'paper' && userSelection == 'rock'){
-        result = 'You lost! Paper wins rock!'
-        computerScore ++
-    }
+    else if (
+        (userSelection == 'rock' && computerSelection == 'scissors') ||
+        (userSelection == 'paper' && computerSelection == 'rock') || 
+        (userSelection == 'scissors' && computerSelection == 'paper')
+        ){
+            result = `You won! ${userSelection} beats ${computerSelection}`
+            userScore ++;
+        }
 
-    else if (computerSelection == 'scissors' && userSelection == 'paper'){
-        result = 'You lost! Scissors wins paper!'
-        computerScore ++
-    }
-
-    else if (userSelection == 'rock' && computerSelection == 'scissors'){
-        result = 'You won!'
-        userScore ++
-    }
-
-    else if (userSelection == 'paper' && computerSelection == 'rock'){
-        result = 'You won!'
-        userScore ++
-    }
-
-    else if (userSelection == 'scissors' && computerSelection == 'paper'){
-        result = 'You won!'
-        userScore ++
-    }
-    
     return result  
 };
 
